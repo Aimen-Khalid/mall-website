@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="row">
+        <div class="col-5 offset-4">
+            <nav class="nav">
+                <a href=stores class="nav-link">Shop</a>
+                <a href=user_cart_path(current_user) class="nav-link">Cart</a>
+                <% if user_signed_in? %>
+                      <%= link_to "Log Out", log_out_path, method: :delete, class: "nav-link" %>
+                  <% end %>
+            </nav>
+        </div>
+        <div class="col text-right">
+            <nav class="nav">
+                <% if user_signed_in? %>
+                      <%= link_to current_user.name,user_path(current_user), class: "nav-link"%>
+                  <% end %>
+            </nav>
+        </div>
+    </div>
+</div>
+<h1>Stores List</h1>
+<ul>
+  <% @stores.each do |store| %>
+    <div>
+        <div> Name: <%= link_to store.store_name, store_path(store) %> </div>
+
+        
+
+        <%= link_to "Edit", edit_store_path(store)%>
+        <%= button_to "Delete", store_path(store), method: :delete%>
+        
+    </div>
+  <% end %>
+</ul>
+<%if current_user.user_type=="Admin"%>
+  <%= link_to "Add a New Store", new_store_path %></br>
+<%end%>

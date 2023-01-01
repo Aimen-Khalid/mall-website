@@ -1,0 +1,14 @@
+<h3>Add a product</h3>
+<%= form_with model: @product, url: store_products_path(@store), method: :post do |form| %>
+  <%=form.label :image%>
+  <%=form.file_field :image%></br>
+  <%= form.text_field :product_name, placeholder: "Name" %></br>
+  <%= form.text_field :product_description, placeholder: "description" %></br>
+  <%= form.text_field :category, placeholder: "category" %></br>
+  <%= form.text_field :price, placeholder: "price" %></br>
+  <%= form.text_field :order_date, placeholder: "order_date" %></br>
+
+
+  <%= form.submit %>
+  
+<% end %>

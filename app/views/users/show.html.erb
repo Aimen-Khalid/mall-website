@@ -1,0 +1,10 @@
+<div> User Name: <%= @user.name %> </div>
+<div> Mail: <%= @user.email %> </div>
+<div> Address: <%= @user.address %> </div>
+<div> Contact: <%= @user.phone_number %> </div>
+<div> Type: <%= @user.user_type %> </div>
+<%= link_to "Stores", stores_path %></br>
+<%= link_to "Cart", user_cart_path(@user) %></br>
+
+
+<%# <%= link_to "Back to list page", users_path %>

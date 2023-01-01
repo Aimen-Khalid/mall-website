@@ -1,0 +1,23 @@
+<h3>Edit product</h3>
+<%= form_with model: @product, url: store_product_path(@store, @product), method: :patch do |form| %>
+  <%=form.label :image%>
+  <%=form.file_field :image%></br>
+  <%= form.text_field :product_name, placeholder: "Name" %></br>
+  <%= form.text_field :product_description, placeholder: "description" %></br>
+  <%= form.text_field :category, placeholder: "category" %></br>
+  <%= form.text_field :price, placeholder: "price" %></br>
+  <%= form.text_field :order_date, placeholder: "order_date" %></br>
+
+  <%= form.submit %>
+  <% if flash[:notice] %>
+  <div class="alert alert-notice"><%= flash[:notice] %></div>  
+   <% end %>
+
+ <% if flash[:error] %>
+  <div class="alert alert-notice"><%= flash[:error] %></div>  
+   <% end %>
+
+
+<% end %>
+<%=link_to "Back to Products List", store_products_path(@store)%>
+

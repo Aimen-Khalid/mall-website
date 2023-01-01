@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  store_id: 1
+  product_name: MyString
+  product_description: MyString
+  category: MyString
+  price: 1
+  order_date: 2022-12-23
+
+two:
+  store_id: 1
+  product_name: MyString
+  product_description: MyString
+  category: MyString
+  price: 1
+  order_date: 2022-12-23

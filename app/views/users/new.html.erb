@@ -1,0 +1,12 @@
+<h3>Add a user</h3>
+<%= form_with model: @user do |form| %>
+  <%= form.text_field :name, placeholder: "Name" %>
+  <%= form.text_field :email, placeholder: "Mail" %>
+  <%= form.text_field :address, placeholder: "Address" %>
+  <%= form.text_field :phone_number, placeholder: "Contact" %>
+  <%= form.text_field :user_type, placeholder: "Buyer/ Seller/Admin" %>
+
+
+  <%= form.submit %>
+  
+<% end %>

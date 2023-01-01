@@ -1,0 +1,19 @@
+<%if @store.logo.attached?%>
+        <%=image_tag(@store.logo, style:"height: 300px;")%>
+<%end%>
+<h1>Products List</h1>
+<ul>
+  <% @products.each do |product| %>
+    <div>
+        <div> Name: <%= link_to product.product_name, store_product_path(@store.id,product.id) %> </div>
+        
+        <%= link_to "Edit", edit_store_product_path(@store.id,product.id)%>
+        <%= button_to "Delete", store_product_path(@store.id,product.id), method: :delete%>
+        
+    </div>
+  <% end %>
+</ul>
+<%if current_user.user_type=="Seller"%>
+  <%= link_to "Add a New Product", new_store_product_path(@store) %>
+<%end%>
+<%=link_to "Back to Stores List", stores_path%>

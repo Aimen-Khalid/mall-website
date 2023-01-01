@@ -1,0 +1,43 @@
+
+
+
+
+
+
+<!-- HTML -->
+<style>
+  table {
+    border: 0;
+  }
+  /* CSS */
+.store-logo {
+  width: 200px;
+  height: 200px;
+  border-radius: 10%;
+  overflow: hidden;
+}
+
+.store-logo img {
+  width: 100%;
+}
+
+</style>
+
+<table>
+  <tr>
+    <td class="store-logo">
+        <%if @store.logo.attached?%>
+            <%=image_tag(@store.logo, style:"height: 300px;")%>
+        <%end%>
+    </td>
+    <td>
+      <h1>Name: <%= @store.store_name %></h1>
+      <p>Description: <%= @store.description %></p>
+      <p>Address: <%= @store.address %></p>
+      <p>Phone Number: <%= @store.phone_number %></p>
+      <p>Email: <%= @store.mail %></p>
+    </td>
+  </tr>
+</table>
+<%= link_to "Products", store_products_path(@store)%></br>
+<%= link_to "Back to Stores List", stores_path%>

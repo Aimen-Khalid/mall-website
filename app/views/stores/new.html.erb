@@ -1,0 +1,14 @@
+<h3>Create a Store</h3>
+<%= form_with model: @store do |form| %>
+
+  <%=form.label :logo%>
+  <%= form.file_field :logo %></br>
+  <%= form.text_field :store_name, placeholder: "Name" %></br>
+  <%= form.text_field :description, placeholder: "Description" %></br>
+  <%= form.text_field :address, placeholder: "Address" %></br>
+  <%= form.text_field :phone_number, placeholder: "Phone" %></br>
+  <%= form.text_field :mail, placeholder: "Mail" %></br>
+  
+  
+  <%= form.submit %>
+<% end %>

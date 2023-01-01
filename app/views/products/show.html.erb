@@ -1,0 +1,18 @@
+<%if @product.image.attached?%>
+        <%=image_tag(@product.image, style:"height: 300px;")%>
+<%end%>
+<div> Product Name: <%= @product.product_name %> </div>
+<div> Description: <%= @product.product_description %> </div>
+<div> Category at: <%= @product.category %> </div>
+<div> Price: <%= @product.price %> </div>
+<div> Order Date: <%= @product.order_date %> </div>
+
+<%if current_user.user_type=="Buyer"%>
+        <%= link_to "Add product to cart", add_to_cart_store_product_path(@store,@product) %></br>
+        <%= link_to "Back", store_products_path %>
+<%end%>
+
+<%if current_user.user_type!="Buyer"%>
+        <%= link_to "Back to user profile", user_path(current_user) %>
+<%end%>
+<%=link_to "Back to Products List", store_products_path(@store)%>

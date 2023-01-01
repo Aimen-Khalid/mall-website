@@ -1,0 +1,8 @@
+<h3>Update Blog Details</h3>
+<%= form_with model: @blog do |form| %>
+  <%= form.text_field :name, placeholder: "Name" %>
+  <%= form.text_field :author_name, placeholder: "Author Name" %>
+  <%= form.text_field :description, placeholder: "Description" %>
+  <%= form.submit %>
+  
+<% end %>
