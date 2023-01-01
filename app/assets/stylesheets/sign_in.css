@@ -1,12 +1,16 @@
  * {
     font-family: "Poppins";
-    font-size: 30px;
+    font-size: 20px;
   }
   .container{
     border: solid black;
   }
   .nav-link-right-aligned{
     padding-right: 0px;
+  }
+  .custom-navbar
+  {
+    --bs-navbar-padding-y: 0rem !important;
   }
 /*
   body {
