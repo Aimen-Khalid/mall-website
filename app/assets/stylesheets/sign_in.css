@@ -12,6 +12,9 @@
   {
     --bs-navbar-padding-y: 0rem !important;
   }
+  .logo{
+    height:60px;
+  }
 /*
   body {
     -webkit-user-select: none;

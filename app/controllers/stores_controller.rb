@@ -1,10 +1,6 @@
 class StoresController < ApplicationController
   def index
-      if user_signed_in?
           @stores = Store.all
-      else
-        redirect_to '/users/sign_in'
-      end
     end
 
     def new

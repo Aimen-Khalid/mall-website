@@ -12,6 +12,6 @@
     </div>
   <% end %>
 </ul>
-<%if current_user.user_type=="Admin"%>
+<%if user_signed_in? and current_user.user_type=="Admin"%>
   <%= link_to "Add a New Store", new_store_path %></br>
 <%end%>
