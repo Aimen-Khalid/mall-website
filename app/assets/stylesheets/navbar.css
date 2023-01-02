@@ -1,0 +1,15 @@
+
+.custom-navbar
+{
+  --bs-navbar-padding-y: 0rem !important;
+  margin: auto !important;
+}
+.navbar-logo
+{
+    height:50px;
+}
+.user-avatar
+{
+    height:45px;
+    margin-right:10px;
+}
