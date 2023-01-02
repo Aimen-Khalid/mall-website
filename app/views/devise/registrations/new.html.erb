@@ -7,82 +7,10 @@
 <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
 <title>Bootstrap Sign up Form Horizontal</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="/assets/signup.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
-<style>
-	body {
-		color: #999;
-		background: #f3f3f3;
-		font-family: 'Roboto', sans-serif;
-	}
-    .form-control {
-		border-color: #eee;
-        min-height: 41px;
-		box-shadow: none !important;
-	}
-    .form-control:focus {
-		border-color: #5cd3b4;
-	}
-    .form-control, .btn {        
-        border-radius: 3px;
-    }
-	.signup-form {
-		width: 500px;
-		margin: 0 auto;
-		padding: 30px 0;
-	}
-    .signup-form h2 {
-		color: #333;
-        margin: 0 0 30px 0;
-		display: inline-block;
-		padding: 0 30px 10px 0;
-		border-bottom: 3px solid #5cd3b4;
-    }
-    .signup-form form {
-		color: #999;
-		border-radius: 3px;
-    	margin-bottom: 15px;
-        background: #fff;
-        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-        padding: 30px;
-    }
-	.signup-form .form-group {
-		margin-bottom: 20px;
-	}
-	.signup-form label {
-		font-weight: normal;
-		font-size: 13px;
-	}
-    .signup-form input[type="checkbox"] {
-		margin-top: 2px;
-	}
-    .signup-form .btn {        
-        font-size: 16px;
-        font-weight: bold;
-		background: #5cd3b4;
-		border: none;
-		margin-top: 20px;
-		min-width: 140px;
-    }
-	.signup-form .btn:hover, .signup-form .btn:focus {
-		background: #41cba9;
-        outline: none !important;
-	}
-    .signup-form a {
-		color: #5cd3b4;
-		text-decoration: underline;
-	}
-	.signup-form a:hover {
-		text-decoration: none;
-	}
-    .signup-form form a {
-		color: #5cd3b4;
-		text-decoration: none;
-	}	
-	.signup-form form a:hover {
-		text-decoration: underline;
-	}
-</style>
+
 
 </head>
 <body>
@@ -92,10 +20,14 @@
   <div class="col-xs-8 col-xs-offset-4">
 			<h2>Sign Up</h2>
 		</div>		
+   <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, class:"input-box" %>
+  </div>
 
   <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+    <%= f.email_field :email, class:"input-box", autofocus: true %>
   </div>
 
   <div class="field">
@@ -103,38 +35,39 @@
     <% if @minimum_password_length %>
       <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+    <%= f.password_field :password, class:"input-box",autocomplete: "off" %>
   </div>
 
   <div class="field">
     <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    <%= f.password_field :password_confirmation, class:"input-box", autocomplete: "off" %>
   </div>
 
   <div class="field">
     <%= f.label :address %><br />
-    <%= f.text_field :address %>
+    <%= f.text_field :address, class:"input-box" %>
   </div>
 
   <div class="field">
     <%= f.label :phone_number %><br />
-    <%= f.text_field :phone_number %>
+    <%= f.text_field :phone_number, class:"input-box" %>
   </div>
 
   <div class="field">
     <%= f.label :user_type %><br />
-    <%= f.text_field :user_type %>
+    <%= f.text_field :user_type, class:"input-box" %>
   </div>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
+ 
 
-  <div class="actions" style=" margin-top: 10px;">
-    <%= f.submit "Sign up" %>
+  <div class="actions centre-align" style=" margin-top: 10px; height:80px;">
+    <%= f.submit "Sign up", class:"btn btn-primary"%></br>
+     <%- if controller_name != 'sessions' %>
+    <p style="margin-top:10px;">Already have an account?<%= link_to " Sign in", new_session_path(resource_name) %></p><br />
+  <% end %>
+  
   </div>
-  <%= render "devise/shared/links" %>
+ 
 
 <% end %>
 
