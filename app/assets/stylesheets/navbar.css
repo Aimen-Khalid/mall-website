@@ -3,6 +3,7 @@
 {
   --bs-navbar-padding-y: 0rem !important;
   margin: auto !important;
+  
 }
 .navbar-logo
 {
@@ -12,4 +13,9 @@
 {
     height:45px;
     margin-right:10px;
+}
+.nav-container{
+    position: fixed;
+    top: 0;
+    z-index: 1;
 }
