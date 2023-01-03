@@ -70,29 +70,44 @@
   
     <tr>
       <td class="title">Product Name</td>
-      <td class="value"><%=@store.store_name%></td>
+      <td class="value"><%=@product.product_name%></td>
     </tr>
     <tr>
       <td class="title">Description</td>
-      <td class="value"><%=@store.description%></td>
+      <td class="value"><%=@product.product_description%></td>
     </tr>
     <tr>
-      <td class="title">Address</td>
-      <td class="value"><%=@store.address%></td>
+      <td class="title">Category</td>
+      <td class="value"><%=@product.category%></td>
     </tr>
     <tr>
-      <td class="title">Contact</td>
-      <td class="value"><%=@store.phone_number%></td>
+      <td class="title">Price</td>
+      <td class="value"><%=@product.price%></td>
     </tr>
-    <tr>
-      <td class="title">Email</td>
-      <td class="value"><%=@store.mail%></td>
-    </tr>
+   
 </table>
+
+<%if current_user.user_type=="Buyer"%>
+        <%= link_to "Add product to cart", add_to_cart_store_product_path(@store,@product) %></br>
+        <%= link_to "Back", store_products_path %>
+
+        <a href="<%= url_for(add_to_cart_store_product_path(@store,@product))%>" id="add-prod-to-cart"><button type="button" class="add-store-btn">
+      <span class="add-prod-btn-text">
+        <span>Add to Cart</span>
+      </span>
+    </button><a>
+
+
+<%end%>
+
+<%if current_user.user_type!="Buyer"%>
+        <%= link_to "Back to user profile", user_path(current_user) %>
+<%end%>
 </div>
 
 </body>
 </html>
+
 
 
 <%if @product.image.attached?%>
