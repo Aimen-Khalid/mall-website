@@ -7,37 +7,113 @@
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
 </head>
 
+<style>  
+.products-of-store{
+  padding: 20px;
+  padding-left:200px;
+  padding-right:200px;
+  margin-bottom: 50px;
+  background: #3D0000;
+  /* background: rgb(195,34,34); */
+  background: linear-gradient(0deg, #801336 10%, #C72C41 82%);
+  /* border-radius: 30px; */
+}
+
+.product-image{
+  height:100px;
+  padding:20px;
+  margin-top:30px;
+}
+
+.logo-container{  
+background: #FFFFFF;
+box-shadow: 0px 10px 4px rgba(0, 0, 0, 0.25);
+border-radius: 30px;
+width: 300px;
+height:200px;
+margin:60px;
+position: relative;
+transition: transform 0.5s;
+}
+.logo-container:hover .overlay{
+  opacity:1;
+  margin-left:5%;
+  transition:0.5s;
+}
+.logo-container:hover{
+  transform: translateY(-10px);
+}
+
+.overlay
+{
+  display: block;
+  position: absolute;
+  top: 7%;
+  width: 70px;
+  margin-left:0px;
+  opacity:0;
+}
+.overlay .fa { 
+cursor: pointer; 
+background-color: #0000; 
+color: #0000; 
+height: 35px; 
+width: 35px; 
+font-size: 20px; 
+padding: 7px; 
+margin: 2%; 
+margin-bottom: 5%; 
+} 
+.overlay .btn-secondary { 
+  background: transparent !important; 
+  border: none !important; 
+  box-shadow: none  !important! 
+  color: #0000; 
+}
+
+</style>
 
 <body>
 
-<div style="text-align: center;">
+<div style="text-align: center; font-family:'VisbyCF-Medium'; text-align:center; margin-top:20px;">
 
   <%if @store.logo.attached?%>
         <%=image_tag(@store.logo, style:"height: 200px;")%>
   <%end%>
 
-  <h1>Products List</h1>
-  
+  <h2 style="margin-top:20px; margin-bottom:20px;">Products List</h2>
+
   <div class="products-of-store">
-    <ul>
+    <div class="row">
       <% @products.each do |product| %>
 
-        <div>
-        # <%if @product.logo.attached?%>
-        #   <%=image_tag(@product.logo, style:"height: 100px;")%>
-        # <%end%>
+        <div class="col-4 text-center logo-container mb-8">
+          <a href="<%= url_for(store_product_path(@store.id,product.id)) %>"> <%= image_tag product.image, class: "product-image" %></a>
+          
+          <div class="overlay">
+          <a href="<%= url_for(store_product_path(@store.id,product.id)) %>"> <button type="button" class="btn btn-secondary" title="View Details"><i class="fa-solid fa-circle-info" style="color:black;"></i></button></a>
+          
+            <%if user_signed_in? and current_user.user_type=="Seller"%>
+              <a href="<%= url_for(edit_store_product_path(@store.id,product.id)) %>"><button type="button" class="btn btn-secondary" title="Edit Product Details"><i class="fa-solid fa-pen-to-square" style="color:black;"></i></button></a>
 
-          <div> Name: <%= link_to product.product_name, store_product_path(@store.id,product.id) %> </div>  
-          <%= link_to "Edit", edit_store_product_path(@store.id,product.id)%>
-          <%= button_to "Delete", store_product_path(@store.id,product.id), method: :delete%>  
+              <form action="<%= url_for(store_product_path(@store.id,product.id)) %>" method="post">
+                <input type="hidden" name="_method" value="delete">
+            
+                <button type="submit" class="btn btn-secondary" title="Delete Product">
+                  <i class="fa-sharp fa-solid fa-trash" style="color:black;"></i>
+                </button>
+
+              </form>
+            <%end%>
+          </div>
         </div>
       <% end %>
-    </ul>
     
     <%if current_user.user_type=="Seller"%>
       <%= link_to "Add a New Product", new_store_product_path(@store) %>
     <%end%>
-  </div>
+    
+    </div>
 
   <%=link_to "Back to Stores List", stores_path%>
 
