@@ -109,7 +109,7 @@ margin-bottom: 5%;
         </div>
       <% end %>
     
-    <%if current_user.user_type=="Seller"%>
+    <%if user_signed_in? and current_user.user_type=="Admin"%>
       <%= link_to "Add a New Product", new_store_product_path(@store) %>
     <%end%>
     

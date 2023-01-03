@@ -1,5 +1,5 @@
-<style>
-  body{
+<style>  
+ body{
   
   background-image: url('/assets/bg3.jpg');
   background-repeat: no-repeat;
@@ -7,18 +7,84 @@
   background-size: cover;
   background-attachment: fixed;
 }
-</style>
-<h3>Create a Store</h3>
-<%= form_with model: @store do |form| %>
+.main-container{
+  
+  margin:auto;
+  margin-top:100px;
+  width: 30vw;
+  height: 70vh;
+  background-color: #535353;
+  /* background-color: white; */
+  opacity: 0.6;
+  border-radius:10px;
+  filter: blur(5px);
+  position: relative;
+} 
+.outer-container{
+  position:relative;
+  margin:auto;
+  width:30vw;
+}
+.store-logo{
+  height:250px;
+  isolation: isolate;
+}
 
-  <%=form.label :logo%>
-  <%= form.file_field :logo %></br>
-  <%= form.text_field :store_name, placeholder: "Name" %></br>
-  <%= form.text_field :description, placeholder: "Description" %></br>
-  <%= form.text_field :address, placeholder: "Address" %></br>
-  <%= form.text_field :phone_number, placeholder: "Phone" %></br>
-  <%= form.text_field :mail, placeholder: "Mail" %></br>
+.form-container{
   
-  
-  <%= form.submit %>
-<% end %>
+  position:absolute;
+  top:1%;
+  color: #999;
+  border-radius: 3px;
+  margin-bottom: 15px;
+  padding: 30px;
+  transform: translate(-50%, 0);
+  left: 50%;
+  width: 100%;
+}
+
+.input-box
+{
+    width: 100%;
+    height: 40px;
+    font-size: 20px;
+    color:black;
+    margin-top:20px;
+    background-color:white;
+    opacity:0.8;
+    border-radius:10px;
+}
+.btn {        
+    font-size: 16px;
+    font-weight: bold;
+    background: #5cd3b4;
+    border: none;
+    margin-top: 20px;
+    min-width: 140px;
+    margin-left: auto;
+    margin-right:auto;
+}
+</style>
+
+<div class="outer-container">
+  <div class="main-container">
+    
+  </div>
+  <div class="form-container">
+    <h3>Create a Store</h3>
+    <%= form_with model: @store do |form| %>
+
+      <%=form.label :logo%>
+      <%= form.file_field :logo %></br>
+      <%= form.text_field :store_name, class:"input-box", placeholder: "Name" %></br>
+      <%= form.text_field :description, class:"input-box", placeholder: "Description" %></br>
+      <%= form.text_field :address, class:"input-box", placeholder: "Address" %></br>
+      <%= form.text_field :phone_number, class:"input-box", placeholder: "Phone" %></br>
+      <%= form.text_field :mail, class:"input-box", placeholder: "Mail" %></br>
+      
+      <div class="center-align">
+      <%= form.submit "Create Store", class:"btn btn-primary"%></br>
+      </div>
+    <% end %>
+  </div>
+</div>
