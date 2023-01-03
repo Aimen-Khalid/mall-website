@@ -39,6 +39,10 @@ class CartsController < ApplicationController
       @products=@cart.products
     end
 
+    def checkout
+      @cart = current_user.cart
+    end
+
     
 
   def destroy
