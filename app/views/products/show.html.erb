@@ -120,21 +120,7 @@
 </table>
 
 
-<%if user_signed_in? and current_user.user_type=="Seller"%>  
-      <div class="text-center">
-        <a href="<%= url_for(new_store_product_path(@store))%>" id="new-product"><button type="button" class="add-product-btn">
-            
-          <span class="add-product-btn-icon">
-              <i class="fa fa-plus"></i>
-            </span>
-          
-          <span class="add-product-btn-text">
-            <span>Add New Product</span>
-          </span>
 
-        </button><a>
-      </div>
-    <%end%>
 
 
 <%if user_signed_in? and current_user.user_type=="Buyer"%>
@@ -151,9 +137,12 @@
 
     </button><a>
     <br>
-    <%= link_to "Back to Products", store_products_path %>
 
 <%end%>
+
+<div class="text-center">
+<%= link_to "Back to Products", store_products_path %>
+</div>
 
 </div>
 

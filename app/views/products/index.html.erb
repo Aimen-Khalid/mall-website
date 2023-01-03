@@ -1,11 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
-</head>
+
 
 <style>  
 .products-of-store{
@@ -43,7 +36,6 @@ transition: transform 0.5s;
 .logo-container:hover{
   transform: translateY(-10px);
 }
-
 .overlay
 {
   display: block;
@@ -123,48 +115,49 @@ margin-bottom: 5%;
       <% @products.each do |product| %>
 
         <div class="col-4 text-center logo-container mb-8">
-          <a href="<%= url_for(store_product_path(@store.id,product.id)) %>"> <%= image_tag product.image, class: "product-image" %></a>
+          <a href="<%= url_for(store_product_path(@store.id, product.id)) %>"> <%= image_tag product.image, class: "product-image" %></a>
           
           <div class="overlay">
-          <a href="<%= url_for(store_product_path(@store.id,product.id)) %>"> <button type="button" class="btn btn-secondary" title="View Details"><i class="fa-solid fa-circle-info" style="color:black;"></i></button></a>
-          
-            <%if user_signed_in? and current_user.user_type=="Seller"%>
-              <a href="<%= url_for(edit_store_product_path(@store.id,product.id)) %>"><button type="button" class="btn btn-secondary" title="Edit Product Details"><i class="fa-solid fa-pen-to-square" style="color:black;"></i></button></a>
-
-              <form action="<%= url_for(store_product_path(@store.id,product.id)) %>" method="post">
-                <input type="hidden" name="_method" value="delete">
+            <a href="<%= url_for(store_product_path(@store.id,product.id)) %>"> <button type="button" class="btn btn-secondary" title="View Details"><i class="fa-solid fa-circle-info" style="color:black;"></i></button></a>
             
-                <button type="submit" class="btn btn-secondary" title="Delete Product">
-                  <i class="fa-sharp fa-solid fa-trash" style="color:black;"></i>
-                </button>
+              <%if user_signed_in? and current_user.user_type=="Seller"%>
 
-              </form>
-            <%end%>
+                <a href="<%= url_for(edit_store_product_path(@store.id, product.id)) %>"><button type="button" class="btn btn-secondary" title="Edit Product Details"><i class="fa-solid fa-pen-to-square" style="color:black;"></i></button></a>
+
+                <form action="<%= url_for(store_product_path(@store.id, product.id)) %>" method="post">
+                  <input type="hidden" name="_method" value="delete">
+                  <button type="submit" class="btn btn-secondary" title="Delete Product">
+                    <i class="fa-sharp fa-solid fa-trash" style="color:black;"></i>
+                  </button>
+                </form>
+              <%end%>
           </div>
         </div>
       <% end %>
-    
-    <%if user_signed_in? and current_user.user_type=="Seller"%>  
-      <div class="text-center">
-        <a href="<%= url_for(new_store_product_path(@store))%>" id="new-product"><button type="button" class="add-product-btn">
-            
-          <span class="add-product-btn-icon">
-              <i class="fa fa-plus"></i>
-            </span>
-          
-          <span class="add-product-btn-text">
-            <span>Add New Product</span>
-          </span>
+   </div>
+  </div>
 
-        </button><a>
-      </div>
-    <%end%>
-    
+
+  <%if user_signed_in? and current_user.user_type=="Seller"%>  
+    <div class="text-center">
+      <a href="<%= url_for(new_store_product_path(@store))%>" id="new-product"><button type="button" class="add-product-btn">
+            
+        <span class="add-product-btn-icon">
+            <i class="fa fa-plus"></i>
+          </span>
+          
+        <span class="add-product-btn-text">
+          <span>Add New Product</span>
+        </span>
+
+      </button><a>
     </div>
+
+  <%else%>
+   <div style="height:100px"></div>
+  <%end%>
 
   <%=link_to "Back to Stores List", stores_path%>
 
-
 </div>
-</body>
-</html>
+<%= render 'shared/footer' %>

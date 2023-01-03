@@ -20,13 +20,13 @@ class ProductsController < ApplicationController
     end
 
     def edit
-      @store=Store.find(params[:store_id])
+      @store = Store.find(params[:store_id])
       @product = @store.products.find(params[:id])
       
     end
 
     def update
-        @store=Store.find(params[:store_id])
+        @store = Store.find(params[:store_id])
         @product = @store.products.find(params[:id])
        
         if @product.update(product_params)
@@ -73,6 +73,7 @@ class ProductsController < ApplicationController
     private
 
     def product_params
-        params.require(:product).permit(:product_name, :product_description, :category, :price, :order_date, :image)
+        params.require(:product).permit(:product_name,
+         :product_description, :category, :price, :order_date, :image)
     end
 end
