@@ -1,12 +1,40 @@
-<h3>Update User Details</h3>
-<%= form_with model: @user do |form| %>
-  <%= form.text_field :name, placeholder: "Name" %>
-  <%= form.text_field :email, placeholder: "Mail" %>
-  <%= form.text_field :address, placeholder: "Address" %>
-  <%= form.text_field :phone_number, placeholder: "Contact" %>
-  <%= form.text_field :user_type, placeholder: "Buyer/ Seller/Admin" %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="stylesheet" href="/assets/edit-new.css">
+
+<body>
+<div class="outer-container">
+  <div class="main-container">
+    
+  </div>
+  <div class="form-container">
+    <div style="text-align: center;">
+			<h3>EDIT PROFILE</h3>
+		</div>	
+    <%= form_with model: @user do |form| %>
+
+      <%= form.text_field :name, class:"input-box", placeholder: "Name" %></br>
+      <%= form.text_field :email, class:"input-box", placeholder: "Mail" %></br>
+      <%= form.text_field :address, class:"input-box", placeholder: "Address" %></br>
+      <%= form.text_field :phone_number, class:"input-box", placeholder: "Contact" %></br>
+      <%= form.text_field :user_type, class:"input-box", placeholder: "Buyer/ Seller/Admin" %></br>
+      
+      <div class="center-align">
+      <%= form.submit "Update Profile", class:"btn btn-outline-dark"%></br>
+      </div>
+    <% end %>
+  </div>
+</div>
+</body>
+</html>
 
 
-  <%= form.submit %>
-  
-<% end %>
+
+
+
+
+
+

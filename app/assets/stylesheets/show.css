@@ -1,0 +1,58 @@
+body{
+  
+    background-image: url('/assets/bg2.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+  }
+  .main-container{
+    
+    margin:auto;
+    margin-top:100px;
+    width: 30vw;
+    height: 70vh;
+    background-color: black;
+    opacity: 0.6;
+    border-radius:10px;
+    filter: blur(5px);
+    /* backdrop-filter:blur(50px); */
+    position: relative;
+  } 
+  
+ .form-container .store-logo{
+    height:250px;
+    /* padding:10px; */
+    /* margin-top:30px; */
+    isolation: isolate;
+  }
+  
+.outer-container  .img-container{
+    position:absolute;
+    top:1%;
+    transform: translate(-50%, 0);
+    left: 50%;
+  }
+  .outer-container{
+    position:relative;
+    margin:auto;
+    width:30vw;
+  }
+  .table{
+    margin-top:50px;
+    margin-left:80px;
+    font-family:'VisbyCF-Medium';
+    font-size:20px;
+    font-weight:bold;
+    position:absolute;
+    top:40%;
+    transform: translate(-50%, 0);
+    left: 50%;
+    color: gold;
+  }
+  .title{
+    color: gold;
+  }
+  .value{
+    color:gold;
+ 

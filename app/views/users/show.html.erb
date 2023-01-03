@@ -1,10 +1,41 @@
-<div> User Name: <%= @user.name %> </div>
-<div> Mail: <%= @user.email %> </div>
-<div> Address: <%= @user.address %> </div>
-<div> Contact: <%= @user.phone_number %> </div>
-<div> Type: <%= @user.user_type %> </div>
-<%= link_to "Stores", stores_path %></br>
-<%= link_to "Cart", user_cart_path(@user) %></br>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="stylesheet" href="/assets/show.css">
 
 
-<%# <%= link_to "Back to list page", users_path %>
+<body>
+<div class="outer-container">
+    <div class="main-container"></div>
+    <div class="img-container">
+        <img src="/assets/user-avatar.png" style="height:150px;margin-top:50px;">
+    </div>  
+    <table class="table table-borderless" style="margin-top:30px;">    
+        <tr>
+        <td class="title">User Name</td>
+        <td class="value"><%=@user.name%></td>
+        </tr>
+        <tr>
+        <td class="title">Mail</td>
+        <td class="value"><%=@user.email%></td>
+        </tr>
+        <tr>
+        <td class="title">Address</td>
+        <td class="value"><%=@user.address%></td>
+        </tr>
+        <tr>
+        <td class="title">Type</td>
+        <td class="value"><%=@user.user_type%></td>
+        </tr>
+    </table>
+    <div style="position: absolute; top: 83%; left: 26%;">
+    <a href="<%= url_for(edit_user_path(@user)) %>" ><button class="btn btn-outline-dark" style="width:150px;">Edit Profile</button></a>
+    </div>
+</div>
+
+
+
+
+

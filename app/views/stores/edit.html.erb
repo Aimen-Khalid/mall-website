@@ -1,14 +1,34 @@
-<h3>Update a Store</h3>
-<%= form_with model: @store do |form| %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="stylesheet" href="/assets/edit-new.css">
 
-  <%=form.label :logo%>
-  <%= form.file_field :logo %></br>
-  <%= form.text_field :store_name, placeholder: "Name" %></br>
-  <%= form.text_field :description, placeholder: "Description" %></br>
-  <%= form.text_field :address, placeholder: "Address" %></br>
-  <%= form.text_field :phone_number, placeholder: "Phone" %></br>
-  <%= form.text_field :mail, placeholder: "Mail" %></br>
-  
-  
-  <%= form.submit %>
-<% end %>
+<body>
+<div class="outer-container">
+  <div class="main-container">
+    
+  </div>
+  <div class="form-container">
+    <div style="text-align: center;">
+			<h3>EDIT STORE</h3>
+		</div>	
+    <%= form_with model: @store do |form| %>
+
+      <%=form.label :logo, class:"file-field"%>
+      <%= form.file_field :logo %></br>
+      <%= form.text_field :store_name, class:"input-box", placeholder: "Name" %></br>
+      <%= form.text_field :description, class:"input-box", placeholder: "Description" %></br>
+      <%= form.text_field :address, class:"input-box", placeholder: "Address" %></br>
+      <%= form.text_field :phone_number, class:"input-box", placeholder: "Phone" %></br>
+      <%= form.text_field :mail, class:"input-box", placeholder: "Mail" %></br>
+      
+      <div class="center-align">
+      <%= form.submit "Edit Store", class:"btn btn-outline-dark"%></br>
+      </div>
+    <% end %>
+  </div>
+</div>
+</body>
+</html>
