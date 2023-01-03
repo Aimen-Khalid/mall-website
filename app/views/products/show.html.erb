@@ -1,3 +1,100 @@
+<style>  
+ body{
+  
+  background-image: url('/assets/bg2.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+.main-container{
+  
+  margin:auto;
+  margin-top:100px;
+  width: 30vw;
+  height: 70vh;
+  background-color: black;
+  opacity: 0.6;
+  border-radius:10px;
+  filter: blur(5px);
+  /* backdrop-filter:blur(50px); */
+  position: relative;
+} 
+
+.product-img{
+  height:250px;
+  /* padding:10px; */
+  /* margin-top:30px; */
+  isolation: isolate;
+}
+
+.img-container{
+  position:absolute;
+  top:1%;
+  transform: translate(-50%, 0);
+  left: 50%;
+}
+.outer-container{
+  position:relative;
+  margin:auto;
+  width:30vw;
+}
+.table{
+  margin-top:50px;
+  margin-left:80px;
+  font-family:'VisbyCF-Medium';
+  font-size:20px;
+  font-weight:bold;
+  position:absolute;
+  top:40%;
+  transform: translate(-50%, 0);
+  left: 50%;
+  color: gold;
+}
+.title{
+  color: gold;
+}
+.value{
+  color:gold;
+}
+</style>
+
+<div class="outer-container">
+  <div class="main-container"></div>
+  <div class="img-container">
+      <%= image_tag @product.image, class: "product-img" %>
+  </div>
+  
+    <table class="table table-borderless">
+    <table class="table table-borderless">
+  
+    <tr>
+      <td class="title">Product Name</td>
+      <td class="value"><%=@store.store_name%></td>
+    </tr>
+    <tr>
+      <td class="title">Description</td>
+      <td class="value"><%=@store.description%></td>
+    </tr>
+    <tr>
+      <td class="title">Address</td>
+      <td class="value"><%=@store.address%></td>
+    </tr>
+    <tr>
+      <td class="title">Contact</td>
+      <td class="value"><%=@store.phone_number%></td>
+    </tr>
+    <tr>
+      <td class="title">Email</td>
+      <td class="value"><%=@store.mail%></td>
+    </tr>
+</table>
+</div>
+
+</body>
+</html>
+
+
 <%if @product.image.attached?%>
         <%=image_tag(@product.image, style:"height: 300px;")%>
 <%end%>

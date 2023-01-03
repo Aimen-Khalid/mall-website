@@ -1,4 +1,4 @@
-!DOCTYPE html>
+<!DOCTYPE html>>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -14,16 +14,15 @@
     <div style="text-align: center;">
 			<h3>Add a Product</h3>
 		</div>	
-    <%= form_with model: @store do |form| %>
+    <%= form_with model: @product, url: store_products_path(@store), method: :post do |form| %>
 
-      <%=form.label :logo, class:"file-field"%>
-      <%= form.file_field :logo %></br>
+      <%=form.label :image, class:"file-field"%>
+      <%= form.file_field :image %></br>
 
       <%= form.text_field :product_name, class:"input-box", placeholder: "Name" %></br>
-      <%= form.text_field :product_description, class:"input-box", placeholder: "description" %></br>
-      <%= form.text_field :category, class:"input-box", placeholder: "category" %></br>
-      <%= form.text_field :price, class:"input-box", placeholder: "price" %></br>
-      <%= form.text_field :order_date, class:"input-box", placeholder: "order_date" %></br>
+      <%= form.text_field :product_description, class:"input-box", placeholder: "Description" %></br>
+      <%= form.text_field :category, class:"input-box", placeholder: "Category" %></br>
+      <%= form.text_field :price, class:"input-box", placeholder: "Price" %></br>
 
       <div class="center-align">
 
@@ -34,19 +33,3 @@
 </div>
 </body>
 </html>
-
-<h3>Add a product</h3>
-<%= form_with model: @product, url: store_products_path(@store), method: :post do |form| %>
-  <%=form.label :image%>
-  <%=form.file_field :image%></br>
-
-  <%= form.text_field :product_name, placeholder: "Name" %></br>
-  <%= form.text_field :product_description, placeholder: "description" %></br>
-  <%= form.text_field :category, placeholder: "category" %></br>
-  <%= form.text_field :price, placeholder: "price" %></br>
-  <%= form.text_field :order_date, placeholder: "order_date" %></br>
-
-
-  <%= form.submit %>
-  
-<% end %>

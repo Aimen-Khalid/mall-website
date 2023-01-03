@@ -1,23 +1,35 @@
-<h3>Edit product</h3>
-<%= form_with model: @product, url: store_product_path(@store, @product), method: :patch do |form| %>
-  <%=form.label :image%>
-  <%=form.file_field :image%></br>
-  <%= form.text_field :product_name, placeholder: "Name" %></br>
-  <%= form.text_field :product_description, placeholder: "description" %></br>
-  <%= form.text_field :category, placeholder: "category" %></br>
-  <%= form.text_field :price, placeholder: "price" %></br>
-  <%= form.text_field :order_date, placeholder: "order_date" %></br>
+<!DOCTYPE html>>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="stylesheet" href="/assets/edit-new.css">
 
-  <%= form.submit %>
-  <% if flash[:notice] %>
-  <div class="alert alert-notice"><%= flash[:notice] %></div>  
-   <% end %>
+<body>
+<div class="outer-container">
+  <div class="main-container">
+    
+  </div>
+  <div class="form-container">
+    <div style="text-align: center;">
+			<h3>Edit Product</h3>
+		</div>	
+    <%= form_with model: @product, url: store_products_path(@store), method: :post do |form| %>
 
- <% if flash[:error] %>
-  <div class="alert alert-notice"><%= flash[:error] %></div>  
-   <% end %>
+      <%=form.label :image, class:"file-field"%>
+      <%= form.file_field :image %></br>
 
+      <%= form.text_field :product_name, class:"input-box", placeholder: "Name" %></br>
+      <%= form.text_field :product_description, class:"input-box", placeholder: "Description" %></br>
+      <%= form.text_field :category, class:"input-box", placeholder: "Category" %></br>
+      <%= form.text_field :price, class:"input-box", placeholder: "Price" %></br>
 
-<% end %>
-<%=link_to "Back to Products List", store_products_path(@store)%>
+      <div class="center-align">
 
+      <%= form.submit "Update Product", class:"btn btn-outline-dark"%></br>
+      </div>
+    <% end %>
+  </div>
+</div>
+</body>
+</html>

@@ -102,7 +102,7 @@ margin-bottom: 5%;
 	padding: 10px 10px;
  
 }
-#new-store{
+#new-product{
   text-decoration:none;
 }
 
@@ -146,7 +146,7 @@ margin-bottom: 5%;
     
     <%if user_signed_in? and current_user.user_type=="Seller"%>  
       <div class="text-center">
-        <a href="<%= url_for(new_store_path)%>" id="new-store"><button type="button" class="add-product-btn">
+        <a href="<%= url_for(new_store_product_path(@store))%>" id="new-product"><button type="button" class="add-product-btn">
             
           <span class="add-product-btn-icon">
               <i class="fa fa-plus"></i>

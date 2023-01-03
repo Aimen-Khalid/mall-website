@@ -155,16 +155,19 @@ margin-bottom: 5%;
       </div>
 
     </div>
-  <div class="text-center">
-  <a href="<%= url_for(new_store_path)%>" id="new-store"><button type="button" class="add-store-btn">
-    <span class="add-store-btn-icon">
-      <i class="fa fa-plus"></i>
-    </span>
-    <span class="add-store-btn-text">
-      <span>Add New Store</span>
-    </span>
-  </button><a>
-  </div>
-  
+  <%if user_signed_in? and current_user.user_type=="Admin"%>
+    <div class="text-center">
+    <a href="<%= url_for(new_store_path)%>" id="new-store"><button type="button" class="add-store-btn">
+      <span class="add-store-btn-icon">
+        <i class="fa fa-plus"></i>
+      </span>
+      <span class="add-store-btn-text">
+        <span>Add New Store</span>
+      </span>
+    </button><a>
+    </div>
+  <%else%>
+  <div style="height:100px"></div>
+  <%end%>
 </div>
 <%= render 'shared/footer' %>

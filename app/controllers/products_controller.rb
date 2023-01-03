@@ -22,7 +22,7 @@ class ProductsController < ApplicationController
     def edit
       @store=Store.find(params[:store_id])
       @product = @store.products.find(params[:id])
-      @p=@product
+      
     end
 
     def update
