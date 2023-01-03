@@ -56,8 +56,8 @@ padding-bottom:15px;
     border: none;
     margin-top: 20px;
     min-width: 140px;
-margin-left: auto;
-margin-right:auto;
+    margin-left: auto;
+    margin-right:auto;
 }
 .signup-form .btn:hover, .signup-form .btn:focus {
     background: #41cba9;
@@ -68,7 +68,7 @@ margin-right:auto;
     text-decoration: underline;
 }
 .signup-form p{
-text-align: center;
+    text-align: center;
 }
 .signup-form a:hover {
     text-decoration: none;

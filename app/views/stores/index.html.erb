@@ -26,31 +26,140 @@
 </div>
 
 <style>
-.main-container{
+.main-stores-container{
   font-family:'VisbyCF-Medium';
 }
 h2{
   text-align:center;
   margin-top:20px;
+  margin-bottom:20px;
+}
+.store-logo{
+  height:150px;
+  padding:20px;
+  margin-top:30px;
+}
+.logo-container{  
+background: #FFFFFF;
+box-shadow: 0px 10px 4px rgba(0, 0, 0, 0.25);
+border-radius: 30px;
+width: 300px;
+height:200px;
+margin:60px;
+/* margin-top:0px; */
+position: relative;
+}
+.stores-container{
+  padding: 20px;
+  margin-left:200px;
+  margin-right:200px;
+  background: rgb(195,34,34);
+  background: linear-gradient(0deg, rgba(195,34,34,1) 10%, rgba(33,32,31,1) 82%);
+  border-radius: 30px;
+
+}
+.overlay
+{
+  display: block;
+  position: absolute;
+  top: 7%;
+  width: 70px;
+  margin-left:0px;
+  opacity:0;
+}
+.logo-container:hover .overlay{
+  opacity:1;
+  margin-left:5%;
+  transition:0.5s;
+}
+.overlay .fa { 
+cursor: pointer; 
+background-color: #0000; 
+color: #0000; 
+height: 35px; 
+width: 35px; 
+font-size: 20px; 
+padding: 7px; 
+margin: 2%; 
+margin-bottom: 5%; 
+} 
+.overlay .btn-secondary { 
+  background: transparent !important; 
+  border: none !important; 
+  box-shadow: none  !important! 
+  color: #0000; 
+} 
+.add-store-btn {
+	color: #FFFFFF;
+	font-size: 16px;
+	border-radius: 5px;
+	border: solid 0px #084208;
+	text-shadow: 1px 1px 0px #a3a3a3;
+	box-shadow: 0px 10px 14px -7px #616174;
+	text-decoration: none;
+	cursor: pointer;
+	position: relative;
+	overflow: hidden;
+	font-family: Arial;
+	background: linear-gradient(180deg, #006400 10%, #084208 100%);
+	display: inline-flex;
+	align-items: center;
+	padding: 0;
+  margin-top:50px;
+}
+.add-store-btn:hover {
+	background: linear-gradient(180deg, #084208 10%, #006400 100%);
+}
+.add-store-btn-text {
+	position: relative;
+	padding: 10px 18px;
+}
+.add-store-btn-icon {
+	position: relative;
+	border-right: 1px solid #ffffff29;
+	box-shadow: inset rgb(0 0 0 / 14%) -1px 0 0;
+	padding: 10px 10px;
+}
+#new-store{
+  text-decoration:none;
 }
 </style>
-<div class=main-container>
-  <h2>SHOP BY STORE</h2>
-</div>
-<h1>Stores List</h1>
-<ul>
-  <% @stores.each do |store| %>
-    <div>
-        <div> Name: <%= link_to store.store_name, store_path(store) %> </div>
+<div class=main-stores-container>
+    <h2>SHOP BY STORE</h2>
+    <div class="stores-container">
+      <div class="row">
+        <% @stores.each do |store| %>
+          <div class="col-4 text-center logo-container mb-8">
+              <a href="<%= url_for(store_products_path(store)) %>"> <%= image_tag store.logo, class: "store-logo" %></a>
+              <div class="overlay">
+                <a href="<%= url_for(store_path(store)) %>"> <button type="button" class="btn btn-secondary" title="View Details"><i class="fa-solid fa-circle-info" style="color:black;"></i></button></a>
+                
+                <%if current_user.user_type=="Admin"%>
+                  <a href="<%= url_for(edit_store_path(store)) %>"><button type="button" class="btn btn-secondary" title="Edit Store Details"><i class="fa-solid fa-pen-to-square" style="color:black;"></i></button></a>
+                  <form action="<%= url_for(store_path(store)) %>" method="post">
+                    <input type="hidden" name="_method" value="delete">
+                    <button type="submit" class="btn btn-secondary" title="Delete Store">
+                      <i class="fa-sharp fa-solid fa-trash" style="color:black;"></i>
+                    </button>
+                  </form>
+                <%end%>
+                  
 
-        
+              </div>
+          </div>
+        <% end %>
+      </div>
 
-        <%= link_to "Edit", edit_store_path(store)%>
-        <%= button_to "Delete", store_path(store), method: :delete%>
-        
     </div>
-  <% end %>
-</ul>
-<%if user_signed_in? and current_user.user_type=="Admin"%>
-  <%= link_to "Add a New Store", new_store_path %></br>
-<%end%>
+  <div class="text-center">
+  <a href="<% url_for(new_store_path)%>" id="new-store"><button type="button" class="add-store-btn">
+    <span class="add-store-btn-icon">
+      <i class="fa fa-plus"></i>
+    </span>
+    <span class="add-store-btn-text">
+      <span>Add New Store</span>
+    </span>
+  </button><a>
+  </div>
+</div>
+

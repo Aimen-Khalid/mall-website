@@ -1,9 +1,16 @@
 class CustomRegistrationsController < Devise::RegistrationsController
 
     def create
-        build_resource(user_params)
+        # build_resource(user_params)
     
-        resource.save
+        # resource.save
+
+        @user = build_resource(user_params)
+        if @user.save
+          @user.cart=Cart.new(products_count:0)
+        end
+
+
         yield resource if block_given?
         if resource.persisted?
           if resource.active_for_authentication?

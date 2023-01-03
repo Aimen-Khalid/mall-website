@@ -19,3 +19,6 @@
     top: 0;
     z-index: 1;
 }
+.bg-dark{
+    background-color: #070707 !important;
+}
