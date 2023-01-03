@@ -30,7 +30,7 @@
               </div>
 
               <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                 <%= link_to "Remove from cart", remove_from_cart_store_product_path(product.store_id, product.id) %>
+                 <a href="<%= url_for(remove_from_cart_store_product_path(product.store_id, product.id)) %>" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>
               </div>
 
             </div>
