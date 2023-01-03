@@ -1,14 +1,165 @@
-<h1>Users List</h1>
-<ul>
-  <% @users.each do |user| %>
-    <div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+</head>
+
+<style>
+.outer-container{
+  position:relative;
+  margin:auto;
+  width:30vw;
+  margin-bottom:20px
+}
+.main-container{  
+  margin:auto;
+  margin-top:100px;
+  width: 30vw;
+  height: 70vh;
+  background-color: black;
+  opacity: 0.6;
+  border-radius:10px;
+  filter: blur(5px);
+  /* backdrop-filter:blur(50px); */
+  position: relative;
+}
+
+.table{
+  margin:auto;
+  margin-top:50px;
+  margin-bottom:50px;
+  backdrop-filter:blur(50px);
+  
+  font-family:'VisbyCF-Medium';
+  font-size:20px;
+  font-weight:bold;
+  position:relative;
+  top:40%;
+  transform: translate(-50%, 0);
+  left: 50%;
+  color: gold;
+}
+.title{
+  color: gold;
+}
+.value{
+  color:gold;
+}
+
+.overlay
+{
+  display: block;
+  position: absolute;
+  top: 7%;
+  width: 70px;
+  margin-left:0px;
+  opacity:0;
+}
+.overlay .fa { 
+cursor: pointer; 
+background-color: #0000; 
+color: #0000; 
+height: 35px; 
+width: 35px; 
+font-size: 20px; 
+padding: 7px; 
+margin: 2%; 
+margin-bottom: 5%; 
+} 
+.overlay .btn-secondary { 
+  background: transparent !important; 
+  border: none !important; 
+  box-shadow: none  !important! 
+  color: #0000; 
+}
+.add-user-btn {
+	color: #FFFFFF;
+	font-size: 16px;
+	border-radius: 5px;
+	border: solid 0px #3e2e2e;
+	text-shadow: 1px 1px 0px #a3a3a3;
+	box-shadow: 0px 10px 14px -7px #616174;
+	text-decoration: none;
+	cursor: pointer;
+	position: relative;
+	overflow: hidden;
+	background: linear-gradient(180deg, #000000 10%, #1C191A 100%);
+	display: inline-flex;
+	align-items: center;
+	padding: 0;
+  margin-bottom: 50px;
+}
+.add-user-btn:hover {
+	background: linear-gradient(180deg, #27bd22 10%, #000000 100%);
+}
+.add-user-btn-text {
+	position: relative;
+	padding: 10px 18px;
+  font-size:20px;
+}
+.add-user-btn-icon {
+	position: relative;
+	border-right: 1px solid #ffffff29;
+	box-shadow: inset rgb(0 0 0 / 14%) -1px 0 0;
+	padding: 10px 10px;
+ 
+}
+#new-user{
+  text-decoration:none;
+}
+
+</style>
+
+<body>
+
+  <div class="outer-container">
+
+    <h1 style="position:relative; text-align:center; margin-top:20px; color:white">Users List</h1>
+
+    <div style="position:relative; text-align:center; margin-top:20px;">
+    
+      <table class="table table-borderless">
+
+      <% @users.each do |user| %>
+        <tr>
+          <td class="title">User Name</td>
+          <td class="value"><%= link_to user.name, user_path(user) %></td>          
+        </tr>
+
+        <tr>
+          <td class="title">Edit</td>
+          <td class="value"><%= link_to "Edit", edit_user_path(user)%></td>
+        </tr>
         
-        <div> User Name: <%= link_to user.name, user_path(user) %> </div>
-        <%= link_to "Edit", edit_user_path(user)%>
-        <%= button_to "Delete", user_path(user), method: :delete%>
+        <tr>
+          <td class="title">Delete</td>
+          <td class="value"><%= button_to "Delete", user_path(user), method: :delete%></td>
+        </tr>
         
-        
+      <% end %>
+    </table>
+    <div style="height:10px"></div>
+
+    <%if user_signed_in? and current_user.user_type=="Admin"%>  
+      <div class="text-center">
+        <a href="<%= url_for(new_user_path)%>" id="new-user"><button type="button" class="add-user-btn">
+            
+          <span class="add-user-btn-icon">
+            <i class="fa fa-plus"></i>
+          </span>
+          
+          <span class="add-user-btn-text">
+            <span>Add New User</span>
+          </span>
+
+        </button><a>
+      </div>
+    <%end%>
+
     </div>
-  <% end %>
-</ul>
-<%= link_to "Add a New User", new_user_path %>
+  </div>
+</body>
+</html>
