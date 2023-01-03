@@ -1,19 +1,46 @@
-<%if @store.logo.attached?%>
-        <%=image_tag(@store.logo, style:"height: 300px;")%>
-<%end%>
-<h1>Products List</h1>
-<ul>
-  <% @products.each do |product| %>
-    <div>
-        <div> Name: <%= link_to product.product_name, store_product_path(@store.id,product.id) %> </div>
-        
-        <%= link_to "Edit", edit_store_product_path(@store.id,product.id)%>
-        <%= button_to "Delete", store_product_path(@store.id,product.id), method: :delete%>
-        
-    </div>
-  <% end %>
-</ul>
-<%if current_user.user_type=="Seller"%>
-  <%= link_to "Add a New Product", new_store_product_path(@store) %>
-<%end%>
-<%=link_to "Back to Stores List", stores_path%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+</head>
+
+
+<body>
+
+<div style="text-align: center;">
+
+  <%if @store.logo.attached?%>
+        <%=image_tag(@store.logo, style:"height: 200px;")%>
+  <%end%>
+
+  <h1>Products List</h1>
+  
+  <div class="products-of-store">
+    <ul>
+      <% @products.each do |product| %>
+
+        <div>
+        # <%if @product.logo.attached?%>
+        #   <%=image_tag(@product.logo, style:"height: 100px;")%>
+        # <%end%>
+
+          <div> Name: <%= link_to product.product_name, store_product_path(@store.id,product.id) %> </div>  
+          <%= link_to "Edit", edit_store_product_path(@store.id,product.id)%>
+          <%= button_to "Delete", store_product_path(@store.id,product.id), method: :delete%>  
+        </div>
+      <% end %>
+    </ul>
+    
+    <%if current_user.user_type=="Seller"%>
+      <%= link_to "Add a New Product", new_store_product_path(@store) %>
+    <%end%>
+  </div>
+
+  <%=link_to "Back to Stores List", stores_path%>
+
+</div>
+</body>
+</html>
