@@ -51,12 +51,12 @@
           <div style="margin:auto;" class="card-body">
           <%if current_user.user_type=="Buyer"%>
             <button type="button" class="btn btn-warning btn-block btn-lg">
-            <%= link_to "Continue Shopping", stores_path %>
+              <a href="<%= url_for(stores_path) %>" style="text-decoration: none; color:black;" >Continue Shopping</a>
             </button>
           <%end%>
 
             <button type="button" class="btn btn-warning btn-block btn-lg">
-               <%= link_to "Back to user profile", user_path(current_user) %>
+              <a href="<%= url_for(user_path(current_user)) %>" style="text-decoration: none; color:black; " >Back to user profile</a>
             </button>
             <button type="button" class="btn btn-warning btn-block btn-lg">Checkout</button>
           </div>
