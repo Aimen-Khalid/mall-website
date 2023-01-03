@@ -140,8 +140,7 @@ margin-bottom: 5%;
               <a href="<%= url_for(store_products_path(store)) %>"> <%= image_tag store.logo, class: "store-logo" %></a>
               <div class="overlay">
                 <a href="<%= url_for(store_path(store)) %>"> <button type="button" class="btn btn-secondary" title="View Details"><i class="fa-solid fa-circle-info" style="color:black;"></i></button></a>
-                
-                <%if current_user.user_type=="Admin"%>
+                <%if user_signed_in? and current_user.user_type=="Admin"%>
                   <a href="<%= url_for(edit_store_path(store)) %>"><button type="button" class="btn btn-secondary" title="Edit Store Details"><i class="fa-solid fa-pen-to-square" style="color:black;"></i></button></a>
                   <form action="<%= url_for(store_path(store)) %>" method="post">
                     <input type="hidden" name="_method" value="delete">
@@ -150,8 +149,6 @@ margin-bottom: 5%;
                     </button>
                   </form>
                 <%end%>
-                  
-
               </div>
           </div>
         <% end %>
