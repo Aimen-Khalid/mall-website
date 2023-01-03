@@ -1,43 +1,72 @@
-
-
-
-
-
-
-<!-- HTML -->
-<style>
-  table {
-    border: 0;
-  }
-  /* CSS */
-.store-logo {
-  width: 200px;
-  height: 200px;
-  border-radius: 10%;
-  overflow: hidden;
+<style>  
+ body{
+  
+  background-image: url('/assets/bg2.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
 }
+.main-container{
+  
+  margin:auto;
+  margin-top:100px;
+  width: 30vw;
+  height: 70vh;
+  background-color: #fff;
+  opacity: 0.6;
+  border-radius:10px;
+  filter: blur(5px);
+  /* backdrop-filter:blur(50px); */
+  position: relative;
+} 
 
-.store-logo img {
-  width: 100%;
+.store-logo{
+  height:250px;
+  /* padding:10px; */
+  /* margin-top:30px; */
+  isolation: isolate;
 }
-
+.logo-container{  
+background: #FFFFFF;
+box-shadow: 0px 10px 4px rgba(0, 0, 0, 0.25);
+border-radius: 30px;
+width: 300px;
+height:200px;
+position: relative;
+}
+.desc-container{
+  text-align: center;
+}
+.img-container{
+  position:absolute;
+  top:1%;
+  left:20%;
+}
+.outer-container{
+  position:relative;
+  margin:auto;
+  width:30vw;
+}
 </style>
 
-<table>
-  <tr>
-    <td class="store-logo">
-        <%if @store.logo.attached?%>
-            <%=image_tag(@store.logo, style:"height: 300px;")%>
-        <%end%>
-    </td>
-    <td>
-      <h1>Name: <%= @store.store_name %></h1>
+<div class="outer-container">
+<div class="main-container">
+  
+</div>
+<div class="img-container">
+    <%= image_tag @store.logo, class: "store-logo" %>
+    <h1>Name: <%= @store.store_name %></h1>
       <p>Description: <%= @store.description %></p>
       <p>Address: <%= @store.address %></p>
       <p>Phone Number: <%= @store.phone_number %></p>
       <p>Email: <%= @store.mail %></p>
-    </td>
-  </tr>
-</table>
-<%= link_to "Products", store_products_path(@store)%></br>
-<%= link_to "Back to Stores List", stores_path%>
+  </div>
+</div>
+
+
+
+
+
+
+

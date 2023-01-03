@@ -19,6 +19,9 @@
     top: 0;
     z-index: 1;
 }
-.bg-dark{
-    background-color: #070707 !important;
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+.custom-navbar {
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
 }
