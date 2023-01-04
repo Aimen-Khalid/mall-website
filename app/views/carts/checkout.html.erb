@@ -1,63 +1,29 @@
 <style>
-.product-img{
-  height:100px;
-}
-.neonText {
-  color: #fff;
-  text-shadow:
-    0 0 7px #fff,
-    0 0 10px #fff,
-    0 0 21px #fff,
-    0 0 42px #0fa,
-    0 0 82px #0fa,
-    0 0 92px #0fa,
-    0 0 102px #0fa,
-    0 0 151px #0fa;
-}
+.order-confirmed{
+  position:absolute;
+  top:10%;
+  left:15%;
 
+}
+#cont-shop-btn{
+  margin-top:0;
+  margin-left:100px;
+}
 </style>
 
-<section class="h-100";">
-  <div class="container h-100 py-5">
-    <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col-10">
 
-        <div class="d-flex justify-content-between align-items-center mb-4">
-          <h3 class="neonText fw-normal mb-0 text-black">Check Out</h3>
-        </div>
-
-        <% @products.each do |product| %>
-        <div class="card rounded-3 mb-4">
-          <div class="card-body p-4">
-            <div class="row d-flex justify-content-between align-items-center">
-              <div class="col-md-2 col-lg-2 col-xl-2">
-
-                  <a> <%= image_tag product.image, class: "product-img" %></a>
-
-              </div>
-              <div class="col-md-3 col-lg-3 col-xl-3">
-                <p class="lead fw-normal mb-2"><%= product.product_name %></p>
-                <p><span class="text-muted">Category: </span><%= product.category %></p>
-              </div>
-              <div class="col-md-3 col-lg-3 col-xl-3">
-                <p class="lead fw-normal mb-2">Description</p>
-                <p><%= product.product_description %></p>
-              </div>
-              <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                <h5 class="mb-0">Rs <%= product.price %></h5>
-              </div>
-
-            </div>
-          </div>
-        </div>
-        <% end %>
-
-
-        <div style="background-color:transparent; border:none; margin:auto;" class="card ">
-          <p>Congragulations on your successful purchase! <br> Thanks for Shopping with us! </p>
-        </div>
-
-      </div>
-    </div>
+<div class="outer-container">
+  <div class="main-container"></div>
+  <div class="order-confirmed">
+    <img src="/assets/order-confirmed.png" style="height:380px;">
+    <a href="<%=url_for(stores_path)%>"><button type="button" class="btn btn-outline-dark" id="cont-shop-btn">Continue Shopping</button></a>
   </div>
-</section>
+</div>
+
+
+
+
+
+
+
+

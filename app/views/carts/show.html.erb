@@ -2,18 +2,6 @@
 .product-img{
   height:100px;
 }
-.neonText {
-  color: #fff;
-  text-shadow:
-    0 0 7px #fff,
-    0 0 10px #fff,
-    0 0 21px #fff,
-    0 0 42px #0fa,
-    0 0 82px #0fa,
-    0 0 92px #0fa,
-    0 0 102px #0fa,
-    0 0 151px #0fa;
-}
 
 
 </style>
@@ -23,10 +11,7 @@
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-10">
 
-        <div class="d-flex justify-content-between align-items-center mb-4">
-          <h3 class="neonText fw-normal mb-0 text-black"><%= current_user.name %>'s Cart</h3>
-     
-        </div>
+       
 
         <% @products.each do |product| %>
         <div class="card rounded-3 mb-4">
@@ -64,19 +49,16 @@
         <div style="background-color:transparent; border:none" class="card">
           <div style="margin:auto;" class="card-body">
           <%if current_user.user_type=="Buyer"%>
-            <button type="button" class="btn btn-warning btn-block btn-lg">
+            <button type="button" class="btn btn-warning btn-block btn-lg " style="margin-right:25px;">
               <a href="<%= url_for(stores_path) %>" style="text-decoration: none; color:black;" >Continue Shopping</a>
             </button>
           <%end%>
 
-            <button type="button" class="btn btn-warning btn-block btn-lg">
-              <a href="<%= url_for(user_path(current_user)) %>" style="text-decoration: none; color:black; " >Back to user profile</a>
-            </button>
-           
-            <button type="button", onclick = redirect_to :stores_path, notice: "Checkout Successful!", class="btn btn-warning btn-block btn-lg">
+           <%if @cart.products_count!=0%>
+            <a href="<%= url_for(checkout_cart_path) %>"><button type="button" class="btn btn-warning btn-block btn-lg">
               Checkout
-            </button>
-
+            </button></a>
+            <%end%>
 
           </div>
         </div>

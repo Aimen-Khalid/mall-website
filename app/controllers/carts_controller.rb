@@ -41,6 +41,8 @@ class CartsController < ApplicationController
 
     def checkout
       @cart = current_user.cart
+      @cart.products.clear
+      @cart.products_count=0
     end
 
     
@@ -51,6 +53,7 @@ class CartsController < ApplicationController
     redirect_to carts_path
   end
 
+  
 
     private
 

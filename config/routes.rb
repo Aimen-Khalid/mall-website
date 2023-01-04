@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   end
 
   get '/stores/:store_id/products/:id/add_to_cart', to: 'products#add_to_cart', as: 'add_to_cart_store_product'
+  get '/user/:user_id/cart/:id/checkout', to: 'carts#checkout', as: 'checkout_cart'
   get '/stores/:store_id/products/:id/remove_from_cart', to: 'products#remove_from_cart', as: 'remove_from_cart_store_product'
   devise_scope :user do
   get'/log_out', to:'custom_sessions#log_out', as: :log_out
