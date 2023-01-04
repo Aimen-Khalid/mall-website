@@ -28,7 +28,7 @@ class ProductsController < ApplicationController
     def update
         @store = Store.find(params[:store_id])
         @product = @store.products.find(params[:id])
-       
+
         if @product.update(product_params)
           redirect_to store_product_path(@store, @product), notice: 'Product was successfully updated.'
         else
@@ -73,6 +73,6 @@ class ProductsController < ApplicationController
 
     def product_params
         params.require(:product).permit(:product_name,
-         :product_description, :category, :price, :order_date, :image)
+        :product_description, :category, :price, :order_date, :image)
     end
 end

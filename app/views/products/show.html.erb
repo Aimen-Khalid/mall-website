@@ -37,7 +37,6 @@
 .outer-container{
   position:relative;
   margin:auto;
-  margin-bottom:20px;
   width:30vw;
 }
 .table{
@@ -59,46 +58,20 @@
   color:gold;
 }
 
-.add-product-btn {
-	color: #FFFFFF;
-	font-size: 16px;
-	border-radius: 5px;
-	border: solid 0px #3e2e2e;
-	text-shadow: 1px 1px 0px #a3a3a3;
-	box-shadow: 0px 10px 14px -7px #616174;
-	text-decoration: none;
-	cursor: pointer;
-	position: relative;
-	overflow: hidden;
-	background: linear-gradient(180deg, #000000 10%, #1C191A 100%);
-	display: inline-flex;
-	align-items: center;
-	padding: 0;
-  margin-bottom: 50px;
-}
-.add-product-btn:hover {
-	background: linear-gradient(180deg, #27bd22 10%, #000000 100%);
-}
-.add-product-btn-text {
-	position: relative;
-	padding: 10px 18px;
-  font-size:20px;
-}
-.add-product-btn-icon {
-	position: relative;
-	border-right: 1px solid #ffffff29;
-	box-shadow: inset rgb(0 0 0 / 14%) -1px 0 0;
-	padding: 10px 10px;
 </style>
 
 <div class="outer-container">
   <div class="main-container"></div>
   <div class="img-container">
-      <%= image_tag @product.image, class: "product-img" %>
+      <%if @product.image.attached?%>
+          <%= image_tag @product.image, class: "product-img" %>
+        <%else%>
+          <img src="/assets/product.png" class= "product-img" >
+        <%end%>
+      
   </div>
   
-    <table class="table table-borderless">
-    <table class="table table-borderless">
+    <table class="table table-borderless" style="margin-bottom:0;">
   
     <tr>
       <td class="title">Product Name</td>
@@ -119,32 +92,18 @@
    
 </table>
 
-
-
-
-
-<%if user_signed_in? and current_user.user_type=="Buyer"%>
-  <div class="text-center">
-    <a href="<%= url_for(add_to_cart_store_product_path(@store,@product))%>" id="add-cart"><button type="button" class="add-product-btn">    
-
-    <span class="add-product-btn-icon">
-      <i class="fa fa-plus"></i>
-    </span>
-          
-    <span class="add-product-btn-text">
-      <span>Add to Cart</span>
-    </span>
-
+<%if current_user.user_type=="Buyer"%>        
+        <a href="<%= url_for(add_to_cart_store_product_path(@store,@product))%>" id="add-prod-to-cart"><button type="button" class="btn btn-outline-dark" style="margin-top:0;margin-left:200px;">
+      <span class="add-prod-btn-text">
+        <span>Add to Cart</span>
+      </span>
     </button><a>
-    <br>
+
 
 <%end%>
-
-<div class="text-center">
-<%= link_to "Back to Products", store_products_path %>
-</div>
 
 </div>
 
 </body>
 </html>
+

@@ -13,8 +13,8 @@
 }
 
 .product-image{
-  height:100px;
-  padding:20px;
+  height:150px;
+  padding:10px;
   margin-top:30px;
 }
 
@@ -108,18 +108,23 @@ margin-bottom: 5%;
         <%=image_tag(@store.logo, style:"height: 200px;")%>
   <%end%>
 
-  <h2 style="margin-top:20px; margin-bottom:20px; color:white">Products List</h2>
+  <%# <h2 style="margin-top:20px; margin-bottom:20px; color:white">Products List</h2> %>
 
   <div class="products-of-store">
     <div class="row">
       <% @products.each do |product| %>
 
         <div class="col-4 text-center logo-container mb-8">
+        <%if product.image.attached?%>
           <a href="<%= url_for(store_product_path(@store.id, product.id)) %>"> <%= image_tag product.image, class: "product-image" %></a>
-          
+        <%else%>
+          <a href="<%= url_for(store_product_path(@store.id, product.id)) %>"> <img src="/assets/product.png" class= "product-image" ></a>
+        <%end%>
           <div class="overlay">
             <a href="<%= url_for(store_product_path(@store.id,product.id)) %>"> <button type="button" class="btn btn-secondary" title="View Details"><i class="fa-solid fa-circle-info" style="color:black;"></i></button></a>
-            
+            <%if user_signed_in? and current_user.user_type=="Buyer"%>
+              <a href="<%= url_for(add_to_cart_store_product_path(@store.id,product.id)) %>"> <button type="button" class="btn btn-secondary" title="Add to Cart"><i class="fa-solid fa-cart-plus" style="color:black;"></i></button></a>
+            <%end%>
               <%if user_signed_in? and current_user.user_type=="Seller"%>
 
                 <a href="<%= url_for(edit_store_product_path(@store.id, product.id)) %>"><button type="button" class="btn btn-secondary" title="Edit Product Details"><i class="fa-solid fa-pen-to-square" style="color:black;"></i></button></a>
@@ -157,7 +162,7 @@ margin-bottom: 5%;
    <div style="height:100px"></div>
   <%end%>
 
-  <%=link_to "Back to Stores List", stores_path%>
+ 
 
 </div>
 <%= render 'shared/footer' %>
