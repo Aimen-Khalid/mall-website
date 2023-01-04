@@ -147,19 +147,7 @@ margin-bottom: 5%;
     <div style="height:10px"></div>
 
     <%if user_signed_in? and current_user.user_type=="Admin"%>  
-      <div class="text-center">
-        <a href="<%= url_for(new_user_path)%>" id="new-user"><button type="button" class="add-user-btn">
-            
-          <span class="add-user-btn-icon">
-            <i class="fa fa-plus"></i>
-          </span>
-          
-          <span class="add-user-btn-text">
-            <span>Add New User</span>
-          </span>
-
-        </button><a>
-      </div>
+      
     <%end%>
 
     </div>

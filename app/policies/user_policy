@@ -1,8 +1,9 @@
-class ProductPolicy
-    attr_reader :user
+class UserPolicy
+    attr_reader :user, :users
   
-    def initialize( user)
+    def initialize(user,users)
       @user = user
+      @users=users
     end
   
 

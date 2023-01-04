@@ -1,10 +1,12 @@
 
 class UsersController < ApplicationController
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :check_admin, only: [:index]
 
 def index
-      @users = User.all
-      @user=current_user
-      authorize @user
+    @users = User.all
+    @user=current_user
+    
   end
 
   def new
@@ -59,7 +61,16 @@ end
 
 
   private
+  private
+    def set_user
+      @user = User.find(params[:id])
+    end
 
+    def check_admin
+      unless current_user.user_type == "Admin"
+        redirect_to root_path, alert: "You are not authorized to access this page."
+      end
+    end
   def user_params
       params.require(:user).permit(:name, :email, :address, :phone_number, :user_type, :password)
   end
