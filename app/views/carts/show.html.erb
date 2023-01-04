@@ -19,8 +19,8 @@
             <div class="row d-flex justify-content-between align-items-center">
               <div class="col-md-2 col-lg-2 col-xl-2">
 
-               <%if @product.image.attached?%>
-                <%= <%= image_tag product.image, class: "product-img" %>%>
+               <%if product.image.attached?%>
+                <%=  image_tag product.image, class: "product-img" %>
               <%else%>
                 <img src="/assets/product.png" class= "product-img" >
               <%end%>
