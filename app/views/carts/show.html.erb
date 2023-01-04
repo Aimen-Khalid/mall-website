@@ -58,11 +58,11 @@
             </button>
           <%end%>
 
-           <%# <%if @cart.products_count!=0%>
+           <%if @cart.products.first!=nil%>
             <a href="<%= url_for(checkout_cart_path) %>"><button type="button" class="btn btn-warning btn-block btn-lg">
               Checkout
             </button></a>
-            <%# <%end%>
+            <%end%>
 
           </div>
         </div>
