@@ -25,32 +25,44 @@
     </a>
     
     <div class="navbar custom-navbar">
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link" style="color:#EAFDFC" href="<%= url_for(stores_path) %>">Shop</a>
-          </li>
-          <% if user_signed_in? %>
 
-            <li class="nav-item">
-            <a class="nav-link" style="color:#EAFDFC" href="<%= url_for(user_cart_path(current_user, current_user.cart)) %>">Cart </a>
-           
-            </li>
+          <% if user_signed_in? %>
+            <%if current_user.user_type=="Seller"%>
+              <li class="nav-item">
+                <a class="nav-link" style="color:#EAFDFC" href="<%= url_for(stores_path) %>">Stores</a>
+              </li>
+            
+            <% elsif current_user.user_type=="Admin"%>
+              <li class="nav-item">
+                <a class="nav-link" style="color:#EAFDFC" href="<%= url_for(users_path) %>">Users</a>
+              </li>
+            
+            <% else %>
+              <li class="nav-item">
+                <a class="nav-link" style="color:#EAFDFC" href="<%= url_for(stores_path) %>">Shop</a>
+              </li>
+            <% end %>
+
+          
+          
+            <%if current_user.user_type=="Buyer"%>  
+              <li class="nav-item">
+                <a class="nav-link" style="color:#EAFDFC" href="<%= url_for(user_cart_path(current_user, current_user.cart)) %>">Cart </a>
+              </li>
+            <% end %>
 
             <li class="nav-item">
               <%= link_to "Log Out", log_out_path, method: :delete, class:"nav-link", style:"color:#EAFDFC" %>
             </li>
 
-            
-
           <% else %>
-          <li class="nav-item">
+            <li class="nav-item">
               <%= link_to "Sign in", new_user_session_path,class:"nav-link", style:"color:#EAFDFC" %>
-          </li>
+            </li>
           <% end %>
 
-          
-          
         </ul>
         
       </div>
@@ -63,16 +75,14 @@
               </li>
           <%end%>
 
-          
-
     </div>
 
 </nav>
 
   <body>
-    <% if notice %> <p class="alert alert-success"><%= notice %></p> <% end %> <% if alert %> <p class="alert alert-danger"><%= alert %></p> <% end %>
+    <% if notice %> <p class="alert alert-success"><%= notice %></p> <% end %>
+    <% if alert %> <p class="alert alert-danger"><%= alert %></p> <% end %>
     
-   
     <%= yield %>
   </body>
 </html>

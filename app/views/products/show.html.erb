@@ -93,17 +93,16 @@
 </table>
 
 <%if current_user.user_type=="Buyer"%>        
-        <a href="<%= url_for(add_to_cart_store_product_path(@store,@product))%>" id="add-prod-to-cart"><button type="button" class="btn btn-outline-dark" style="margin-top:0;margin-left:200px;">
-      <span class="add-prod-btn-text">
-        <span>Add to Cart</span>
-      </span>
-    </button><a>
+  <a href="<%= url_for(add_to_cart_store_product_path(@store,@product))%>" id="add-prod-to-cart"><button type="button" class="btn btn-outline-dark" style="margin-top:0;margin-left:200px;">
+    
+    <span class="add-prod-btn-text">
+      <span>Add to Cart</span>
+    </span>
 
-
+  </button><a>
 <%end%>
 
 </div>
-
 </body>
 </html>
 
