@@ -20,8 +20,10 @@
       <%= form.text_field :email, class:"input-box", placeholder: "Mail" %></br>
       <%= form.text_field :address, class:"input-box", placeholder: "Address" %></br>
       <%= form.text_field :phone_number, class:"input-box", placeholder: "Contact" %></br>
-      <%= form.text_field :user_type, class:"input-box", placeholder: "Buyer/ Seller/Admin" %></br>
-      
+      <%if current_user.user_type=="Admin"%>   
+        <%= form.label :user_type %><br />
+        <%= form.select :user_type, ['Admin', 'Seller', 'Buyer']%>
+      <% end %></br> 
       <div class="center-align">
       <%= form.submit "Update Profile", class:"btn btn-outline-dark"%></br>
       </div>
