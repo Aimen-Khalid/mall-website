@@ -110,33 +110,36 @@ margin-bottom: 5%;
 #new-user{
   text-decoration:none;
 }
-
+.user-index a{
+  color: yellow;
+  text-decoration:none;
+}
 </style>
 
 <body>
-
+<div class="user-index">
   <div class="outer-container">
 
     <h1 style="position:relative; text-align:center; margin-top:20px; color:white">Users List</h1>
 
     <div style="position:relative; text-align:center; margin-top:20px;">
     
-      <table class="table table-borderless">
+      <table class="table table-borderless" style="text-align: left;">
 
       <% @users.each do |user| %>
         <tr>
-          <td class="title">User Name</td>
-          <td class="value"><%= link_to user.name, user_path(user) %></td>          
+          <td class="value" style="padding-left:30px;padding-top:20px;"><%= link_to user.name, user_path(user) %></td>  
+          <td class="value" style="padding-top:20px;"><%= link_to "Edit", edit_user_path(user),method: :patch%><%= button_to "Delete", user_path(user), method: :delete%></td>        
         </tr>
 
         <tr>
-          <td class="title">Edit</td>
-          <td class="value"><%= link_to "Edit", edit_user_path(user)%></td>
+        <td></td>
+          
         </tr>
         
         <tr>
-          <td class="title">Delete</td>
-          <td class="value"><%= button_to "Delete", user_path(user), method: :delete%></td>
+        <td></td>
+          <td class="value"></td>
         </tr>
         
       <% end %>
@@ -161,5 +164,6 @@ margin-bottom: 5%;
 
     </div>
   </div>
+<div class="user-index">
 </body>
 </html>
