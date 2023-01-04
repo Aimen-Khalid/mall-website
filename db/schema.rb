@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_30_042540) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_04_045738) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -82,7 +82,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_30_042540) do
     t.string "store_name"
     t.string "description"
     t.string "address"
-    t.integer "phone_number"
+    t.string "phone_number"
     t.string "mail"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -91,7 +91,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_30_042540) do
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "address"
-    t.integer "phone_number"
+    t.string "phone_number"
     t.integer "user_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

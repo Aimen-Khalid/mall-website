@@ -1,0 +1,15 @@
+class ProductPolicy
+    attr_reader :user
+  
+    def initialize( user)
+      @user = user
+    end
+  
+
+    def index?
+      user.Admin? 
+    end
+
+    
+
+  end

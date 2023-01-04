@@ -7,10 +7,14 @@ class StoresController < ApplicationController
 
     def new
         @store = Store.new
+        @user = current_user
+        authorize @store
     end
 
     def create
         @store = Store.create(store_params)
+        @user = current_user
+        authorize @store
         if @store.save
           redirect_to stores_path
         else
@@ -20,10 +24,14 @@ class StoresController < ApplicationController
 
     def edit
         @store = Store.find(params[:id])
+        @user = current_user
+        authorize @store
     end
 
     def update
         @store = Store.find(params[:id])
+        @user = current_user
+        authorize @store
         if @store.update(store_params)
           redirect_to store_path(@store)
         else
@@ -39,6 +47,8 @@ class StoresController < ApplicationController
 
   def destroy
     @store = Store.find(params[:id])
+    @user = current_user
+    authorize @store
     @store.destroy
     redirect_to stores_path
   end

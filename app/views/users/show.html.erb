@@ -12,7 +12,7 @@
     <div class="img-container">
         <img src="/assets/user-avatar.png" style="height:150px;margin-top:50px;">
     </div>  
-    <table class="table table-borderless" style="margin-top:30px;">    
+    <table class="table table-borderless" style="margin-top:10px;">    
         <tr>
         <td class="title">User Name</td>
         <td class="value"><%=@user.name%></td>
@@ -22,6 +22,10 @@
         <td class="value"><%=@user.email%></td>
         </tr>
         <tr>
+        <tr>
+        <td class="title">Contact</td>
+        <td class="value"><%=@user.phone_number%></td>
+        </tr>
         <td class="title">Address</td>
         <td class="value"><%=@user.address%></td>
         </tr>

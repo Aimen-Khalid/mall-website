@@ -7,11 +7,15 @@ class ProductsController < ApplicationController
     def new
         @store=Store.find(params[:store_id])
         @product = @store.products.new
+        @user=current_user
+        authorize @product
     end
 
     def create
         @store=Store.find(params[:store_id])
         @product = @store.products.create(product_params)
+        @user=current_user
+        authorize @product
         if @product.save
           redirect_to store_products_path(@store)
         else
@@ -22,12 +26,16 @@ class ProductsController < ApplicationController
     def edit
       @store = Store.find(params[:store_id])
       @product = @store.products.find(params[:id])
+      @user=current_user
+      authorize @product
       
     end
 
     def update
         @store = Store.find(params[:store_id])
         @product = @store.products.find(params[:id])
+        @user=current_user
+        authorize @product
 
         if @product.update(product_params)
           redirect_to store_product_path(@store, @product), notice: 'Product was successfully updated.'
@@ -45,7 +53,7 @@ class ProductsController < ApplicationController
         product=Product.find(params[:id])
         cart=current_user.cart
         CartProduct.new(cart_id: cart.id, product_id:product.id).save
-        current_user.cart.products_count+=1
+        current_user.cart.products_count=current_user.cart.products_count+1
         redirect_to user_cart_path(current_user,cart)
     end
 
@@ -57,9 +65,7 @@ class ProductsController < ApplicationController
       redirect_to user_cart_path(current_user,cart)
   end
 
-    # def destroy
-
-    # end
+   
 
   def destroy
     @store=Store.find(params[:store_id])

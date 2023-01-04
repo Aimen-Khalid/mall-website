@@ -6,7 +6,7 @@ class CartsController < ApplicationController
 
     def new
       @user= User.find(params[:user_id])
-      @cart = @user.cart.new
+      @cart = @user.cart.new(products_count:0)
     end
 
     def create

@@ -18,7 +18,7 @@
 </head>
 
 
-  <nav class="navbar custom-navbar navbar-expand-lg bg-dark" >
+  <nav class="navbar navbar-static-top custom-navbar navbar-expand-lg bg-dark  ">
    <div class="container-fluid" >
     <a class="navbar-brand" href="<%= url_for(stores_path) %>">
     <img src="/assets/onshoplogo.png" class="navbar-logo" alt="On Shop">
@@ -33,7 +33,8 @@
           <% if user_signed_in? %>
 
             <li class="nav-item">
-            <a class="nav-link" style="color:#EAFDFC" href="<%= url_for(user_cart_path(current_user, current_user.cart)) %>">Cart</a>
+            <a class="nav-link" style="color:#EAFDFC" href="<%= url_for(user_cart_path(current_user, current_user.cart)) %>">Cart </a>
+           
             </li>
 
             <li class="nav-item">
